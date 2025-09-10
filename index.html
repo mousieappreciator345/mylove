@@ -1,43 +1,111 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Anniversary 💕</title>
+  <title>Happy Anniversary 💖</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #ffdde1, #ee9ca7);
-      text-align: center;
-      padding: 50px;
+      margin: 0;
+      padding: 0;
+      font-family: 'Great Vibes', cursive;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://www.transparenttextures.com/patterns/hearts.png'), #ffb6c1;
+      background-size: 200px 200px;
     }
-    h1 {
-      color: #d6336c;
-    }
-    img {
-      max-width: 300px;
+
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      width: 100%;
       border-radius: 20px;
-      margin: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
+
+    .slide {
+      display: none;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: fade 1.5s;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .text {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 15px 25px;
+      border-radius: 15px;
+      font-size: 2rem;
+    }
+
+    @keyframes fade {
+      from {opacity: 0.4} 
+      to {opacity: 1}
+    }
+
     audio {
       margin-top: 20px;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <h1>Happy Anniversary, My Love ❤️</h1>
-  <p>Here are some memories of us together:</p>
+  <div class="slideshow-container">
+    <!-- Slide 1 -->
+    <div class="slide fade">
+      <img src="image1.jpg" alt="Memory 1">
+      <div class="text">The day we met 💕</div>
+    </div>
 
-  <!-- Replace these with your images -->
-  <img src="image1.jpg" alt="Memory 1">
-  <img src="image2.jpg" alt="Memory 2">
+    <!-- Slide 2 -->
+    <div class="slide fade">
+      <img src="image2.jpg" alt="Memory 2">
+      <div class="text">Every moment with you is magic ✨</div>
+    </div>
 
-  <!-- Audio player -->
-  <h2>Our Song 🎶</h2>
-  <audio controls>
+    <!-- Slide 3 -->
+    <div class="slide fade">
+      <img src="image3.jpg" alt="Memory 3">
+      <div class="text">Happy Anniversary, my love ❤️</div>
+    </div>
+  </div>
+
+  <!-- Our song -->
+  <audio controls autoplay loop>
     <source src="song.mp3" type="audio/mp3">
     Your browser does not support the audio tag.
   </audio>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      slides[slideIndex-1].style.display = "block";  
+      setTimeout(showSlides, 4000); // Change every 4 seconds
+    }
+  </script>
 </body>
 </html>
